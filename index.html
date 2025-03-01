@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scrollbar-width: none;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        .section1 {
+
+            height: 100vh;
+            width: 100%;
+            background-image: url(backg.png);
+            background-size: cover;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section1::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(0, 0, 0);
+            z-index: 0;
+            opacity: 0.7;
+        }
+
+        .section1::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 60px;
+            bottom: 0;
+            background-color: rgb(0, 0, 0);
+            border-radius: 50% 50% 0 0;
+            border-top: 8px solid red;
+            box-shadow: inset 0 30px 20px rgb(8, 8, 75);
+        }
+
+        .box {
+            width: 600px;
+            height: 400px;
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 0 0 50px black;
+            position: absolute;
+
+        }
+
+        .tag1,
+        .tag2 {
+            font-weight: 800;
+            font-size: 60px;
+        }
+
+
+
+        .form-floating {
+            background-color: transparent;
+            border-color: black;
+            width: 400px;
+            height: 50px;
+            border-radius: 10px;
+            color: white;
+            border-color: black;
+        }
+
+        .form-control {
+            background-color: transparent;
+            border-color: black;
+            width: 400px;
+            height: 50px;
+            border-radius: 10px;
+            color: black;
+            border-color: white;
+        }
+
+        .btn {
+            width: 200px;
+            height: 58px;
+            font-size: 20px;
+            font-weight: 500;
+            /* color: white; */
+
+        }
+
+
+        .logo {
+            width: 200px;
+            position: absolute;
+            top: 10px;
+            left: 200px;
+
+        }
+
+        .lang {
+            position: absolute;
+            top: 10px;
+            right: 300px;
+        }
+
+        .lang1 {
+            background-color: transparent;
+            color: white;
+
+        }
+
+        .sign {
+            position: absolute;
+            top: 10px;
+            right: 170px;
+            width: 100px;
+            height: 38px;
+            font-weight: 600;
+            color: white;
+            border-radius: 10px;
+        }
+
+
+
+
+
+        .trend {
+            background: #000;
+            color: #fff;
+
+            margin-left: 130px;
+            font-size: 38px;
+        }
+
+
+
+        .sectwo {
+            width: 100%;
+            height: 500px;
+            overflow: scroll;
+
+        }
+
+        .cards {
+            display: flex;
+            justify-content: start;
+            width: 80%;
+            overflow-x: auto;
+            height: 500px;
+            gap: 10px;
+            padding: 10px;
+            margin-top: 20px;
+            gap: 30px;
+
+
+
+        }
+
+        .card1 {
+            min-width: 200px;
+            height: 270px;
+            background-image: url(f1.png);
+            margin-right: 20px;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+            position: relative;
+            margin-left: 30px;
+            margin-top: 40px;
+        }
+
+        .card2 {
+            min-width: 200px;
+            height: 270px;
+
+            background-image: url(f2.png);
+            margin-right: 20px;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+
+            position: relative;
+            margin-left: 30px;
+            margin-top: 40px;
+        }
+
+        .card3 {
+            min-width: 200px;
+            height: 270px;
+            background-color: black;
+            background-image: url(f3.png);
+            margin-right: 20px;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+            box-shadow: 0 0 6px black;
+            position: relative;
+            margin-left: 30px;
+            margin-top: 40px;
+        }
+
+        .card4 {
+            min-width: 200px;
+            height: 270px;
+            background-image: url(f4.png);
+            margin-right: 20px;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+            position: relative;
+            margin-left: 30px;
+            margin-top: 40px;
+        }
+
+        .card5 {
+            min-width: 200px;
+            height: 270px;
+            background-image: url(f5.png);
+            margin-right: 20px;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+            position: relative;
+            margin-left: 30px;
+            margin-top: 40px;
+        }
+
+        .card6 {
+            min-width: 200px;
+            height: 270px;
+            background-image: url(f6.png);
+            margin-right: 20px;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+            position: relative;
+            margin-left: 30px;
+            margin-top: 40px;
+        }
+
+        .card7 {
+            min-width: 200px;
+            height: 270px;
+            background-image: url(f7.png);
+            margin-right: 20px;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+            position: relative;
+            margin-left: 30px;
+            margin-top: 40px;
+        }
+
+        .card8 {
+            min-width: 200px;
+            height: 270px;
+            background-image: url(f8.png);
+            margin-right: 20px;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+            position: relative;
+            margin-left: 30px;
+            margin-top: 40px;
+        }
+
+        .card9 {
+            min-width: 200px;
+            height: 270px;
+            background-image: url(f9.png);
+            margin-right: 20px;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+            position: relative;
+            margin-left: 30px;
+            margin-top: 40px;
+        }
+
+        .card10 {
+            min-width: 200px;
+            height: 270px;
+            background-image: url(f10.png);
+            margin-right: 20px;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+            position: relative;
+            margin-left: 30px;
+            margin-top: 40px;
+        }
+
+        .card1:hover {
+            scale: 1.2;
+        }
+
+        .card2:hover {
+            scale: 1.2;
+        }
+
+        .card3:hover {
+            scale: 1.2;
+        }
+
+        .card4:hover {
+            scale: 1.2;
+        }
+
+        .card5:hover {
+            scale: 1.2;
+        }
+
+        .card6:hover {
+            scale: 1.2;
+        }
+
+        .card7:hover {
+            scale: 1.2;
+        }
+
+        .card8:hover {
+            scale: 1.2;
+        }
+
+        .card9:hover {
+            scale: 1.2;
+        }
+
+        .card10:hover {
+            scale: 1.2;
+        }
+
+        .numbers {
+            font-size: 120px;
+            font-weight: 800;
+            color: black;
+            position: absolute;
+            bottom: -40px;
+            left: -20px;
+            -webkit-text-stroke: 2px white;
+        }
+
+
+
+
+
+
+
+
+        .grid {
+            width: 300px;
+            height: 300px;
+            background: #c31432;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #240b36, #c31432);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #240b36, #c31432);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+            color: white;
+            margin: 10px;
+            border-radius: 20px;
+            padding-top: 10px;
+
+        }
+
+        .sec3 {
+            background-color: black;
+        }
+
+        .grids {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            margin: 10px;
+            margin-left: 100px;
+        }
+
+        .more {
+
+            color: white;
+            font-size: 38px;
+            margin-left: 170px;
+
+        }
+
+        .grid1h {
+            font-size: 28px;
+            padding: 10px;
+        }
+
+        .grid1p {
+            font-size: 17px;
+            padding: 18px;
+        }
+
+        .i1 {
+            width: 80px;
+            margin-left: 210px;
+            margin-top: 30px;
+        }
+
+        .i2 {
+            width: 80px;
+            margin-left: 210px;
+            margin-top: -20px;
+        }
+
+        .i3 {
+            width: 80px;
+            margin-left: 210px;
+            margin-top: -40px;
+        }
+
+        .faq {
+            margin-left: 170px;
+            height: 90px;
+            width: 80%;
+            /* border: 8px solid gray; */
+            justify-content: space-between;
+            align-items: center;
+            padding-right: 20px;
+            padding-left: 20px;
+            background-color: rgba(128, 128, 128, 0.189);
+            color: rgba(255, 255, 255, 0.822);
+
+
+
+        }
+
+        .faqq {
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .frequent {
+            margin-bottom: 20px;
+            margin-left: 170px;
+            color: rgba(255, 255, 255, 0.968);
+            font-size: 38px;
+        }
+
+        .sec4 {
+            margin-top: 60px;
+            background-color: black;
+
+        }
+
+        .faq:hover {
+            transition: 0.2s all ease-in-out;
+            background-color: rgba(128, 128, 128, 0.233);
+
+        }
+
+        .qcall {
+            margin-top: 50px;
+            margin-left: 170px;
+            color: rgba(255, 255, 255, 0.721);
+        }
+
+        .foot1 {
+            margin-top: 20px;
+            margin-left: 170px;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.701);
+        }
+
+        .footdown {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+
+        }
+
+        .sec5 {
+            height: 500px;
+        }
+        @media(max-width:800px)
+        {
+            .section1{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+            .box{
+                width: 100%;
+                text-wrap: 20%;
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .btn{
+                display: none;
+            }
+            .logo{
+              display: none;
+            }
+            .form-floating{
+                display: none;
+            }
+            .tag1 {
+                font-size: 50px;
+                width: 100%;
+            }
+            .tag2{
+                font-size: 50px;
+                width: 100%;
+            }
+            .tag3{
+                font-size: 5px;
+                margin-left:-40px;
+            }
+            .tag4{
+               display: none;
+            }
+            .box{
+                display: flex;
+                margin-left: 70px;
+                justify-content: center;
+                align-items: center;
+            }
+            .trend{
+                margin-left: 60px;
+            }
+            .more{
+                font-size: 30px;
+                margin-left: 60px;
+            }
+            .i1{
+                display: none;
+            }
+            .i2{
+                display: none;
+            }
+            .i3{
+                display: none;
+            }
+            .grid{
+                width: 100%;
+            }
+           .grid1h{
+            font-size: 20px;
+           }
+           .grid1p{
+            font-size: 15px;
+           }
+           .frequent{
+            font-size: 30px;
+            margin-left: 120px;
+           }
+
+           .sec4{
+            width: 100%;
+            margin-left: 0px;
+            margin-right: -563px;
+            
+           }
+           .ready{
+            display: none;
+           }
+        }
+        @media(max-width:1000px)
+        {
+            .section1{
+                width: 100%;
+                
+            }
+            .backbg{
+                width: 100%;
+            }
+            .box{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+            }
+            .grids{
+                width: auto;
+                display: flex;
+                flex-direction: column;
+                margin-left: 10px;
+
+            }
+            .grid{
+                width: 60%;
+                text-wrap: 10%;
+                height: 250px;
+               
+                
+            }
+            .i1{
+                margin-top: 10px;
+               
+            }
+            .i3{
+                margin-top: -2px;
+            }
+            .sec4{
+                width: 100%;
+                margin: 0;
+              margin-left: -50px;  
+               /* margin-right: 10px; */
+            }
+            .footdown{
+                width: 100%;
+                text-wrap: 20%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+
+            }
+            .logo{
+              margin-left: 150px;
+              
+            }
+            .lang ,.sign{
+                display: none;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="section1 ">
+
+        <div class="backg"></div>
+        <div class="box  d-flex justify-content-center align-items-center">
+            <h1 class="tag1">Unlimited movies,</h1>
+            <h1 class="tag2"> TV shows and more</h1>
+            <h3 class="tag3 fs-4">Starts at ₹149. Cancel at any time.</h3>
+            <p class="tag4 fs-6">Ready to watch? Enter your email to create or restart your membership.</p>
+
+            <div class="d-flex gap-3 ">
+                <div class="form-floating ">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Email address</label>
+                </div>
+                <button class="btn bg-danger  ">Get Started &gt;</button>
+            </div>
+        </div>
+        <img src="netflixlogo.png" class="logo" alt="">
+
+
+        <div class="d-flex gap-3">
+            <div class="lang">
+                <select class=" lang1 form-select form-select-sm" aria-label="Small select example">
+                    <option selected><i class="fa-solid fa-language"></i> English</option>
+                    <!-- <option value="1">English</option> -->
+                    <option value="2">Hindi</option>
+
+                </select>
+            </div>
+            <button class="bg-danger sign">Sign In</button>
+        </div>
+
+
+    </div>
+    <!-- sec-2 -->
+    <h1 class="trend">Trending Now</h1>
+    <div class="sectwo d-flex  justify-content-top align-items-center flex-column">
+        <div class="cards ">
+            <div class="card1">
+                <p class="numbers">1</p>
+            </div>
+            <div class="card2">
+                <p class="numbers">2</p>
+            </div>
+            <div class="card3">
+                <p class="numbers">3</p>
+            </div>
+            <div class="card4">
+                <p class="numbers">4</p>
+            </div>
+            <div class="card5">
+                <p class="numbers">5</p>
+            </div>
+            <div class="card6">
+                <p class="numbers">6</p>
+            </div>
+            <div class="card7">
+                <p class="numbers">7</p>
+            </div>
+            <div class="card8">
+                <p class="numbers">8</p>
+            </div>
+            <div class="card9">
+                <p class="numbers">9</p>
+            </div>
+            <div class="card10">
+                <p class="numbers">10</p>
+            </div>
+
+        </div>
+    </div>
+    <!-- sec-3 -->
+    <div class="sec3">
+        <h1 class="more">More reasons to join</h1>
+        <div class="grids">
+            <div class="grid">
+                <h1 class="grid1h">Enjoy on your TV</h1>
+                <p class="grid1p"> Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and
+                    more.</p>
+                <img src="tv.png" class="i1" alt="">
+
+            </div>
+            <div class="grid">
+                <h1 class="grid1h">Download your shows to watch offline
+                </h1>
+                <p class="grid1p"> Save your favourites easily and always have something to watch.</p>
+                <img src="download.png" class="i2" alt="">
+
+            </div>
+            <div class="grid">
+                <h1 class="grid1h">Watch everywhere</h1>
+                <p class="grid1p"> Stream unlimited movies and TV shows on your phone, tablet, laptop and TV.</p>
+                <img src="telescope.png" class="i1" alt="">
+            </div>
+            <div class="grid">
+                <h1 class="grid1h">Create profiles for kids</h1>
+                <p class="grid1p">Send kids on adventures with their favourite characters in a space made just for
+                    them
+                    — free with your membership.</p>
+                <img src="emoji.png" class="i3" alt="">
+            </div>
+
+        </div>
+    </div>
+    <!-- sec-4 -->
+    <div class="sec4">
+
+
+        <h1 class="frequent">Frequently Asked Questions</h1>
+        <div class="faqq ">
+            <div class="faq d-flex">
+                <div>
+                    <h2>What is Netflix</h2>
+                </div>
+                <div><i class="fa-solid fa-plus"></i></div>
+            </div>
+        </div>
+        <div class="faqq">
+
+            <div class="faq d-flex">
+                <div>
+                    <h2>How much does Netflix cost?</h2>
+                </div>
+                <div><i class="fa-solid fa-plus"></i></div>
+            </div>
+        </div>
+        <div class="faqq">
+
+            <div class="faq d-flex">
+                <div>
+                    <h2>Where can i watch?</h2>
+                </div>
+                <div><i class="fa-solid fa-plus"></i></div>
+            </div>
+        </div>
+        <div class="faqq">
+
+            <div class="faq d-flex">
+                <div>
+                    <h2>How can I cancel?</h2>
+                </div>
+                <div><i class="fa-solid fa-plus"></i></div>
+            </div>
+        </div>
+        <div class="faqq">
+
+            <div class="faq d-flex">
+                <div>
+                    <h2>What can I watch on Netflix</h2>
+                </div>
+                <div><i class="fa-solid fa-plus"></i></div>
+            </div>
+        </div>
+        <div class="faqq">
+
+            <div class="faq d-flex">
+                <div>
+                    <h2>Is netflix good for kids?</h2>
+                </div>
+                <div><i class="fa-solid fa-plus"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div class="sec5">
+        <div>
+            <div class="footer1 d-flex flex-column justify-content-center align-items-center mt-5 ">
+                <div>
+                    <h5 class="ready text-light">Ready to watch? Enter your email to create or restart your membership.
+                    </h5>
+                </div>
+                <div class="d-flex gap-3 mt-4">
+                    <div class="form-floating ">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
+                    </div>
+                    <button class="btn bg-danger  ">Get Started &gt;</button>
+                </div>
+
+            </div>
+        </div>
+        <div>
+            <h4 class="qcall">Questions? Call 000-800-919-1743</h4>
+        </div>
+        <div class="footdown">
+            <div class="foot1">
+                <div><u>FAQ</u></div>
+                <div><u>Investor Relations</u></div>
+                <div><u>Privacy </u></div>
+                <div><u>Speed Test</u></div>
+            </div>
+            <div class="foot1">
+                <div><u>Help Centre</u></div>
+                <div><u>
+                        Jobs</u></div>
+                <div><u>
+                        Cookie Preferences</u></div>
+                <div><u>Legal Notices</u></div>
+            </div>
+            <div class="foot1">
+                <div>
+                    <u>Account</u>
+                </div>
+                <div><u>Ways to Watch</u></div>
+                <div><u>Corporate Information</u></div>
+                <div><u>Only on Netflix</u>
+                </div>
+            </div>
+            <div class="foot1">
+                <div><u>Media Center</u></div>
+                <div><u>Terms of Use</u></div>
+                <div><u>Contact Us</u></div>
+
+            </div>
+        </div>
+        <div class="end">
+            <div class="d-flex gap-3">
+                <div class="lang">
+                    <select class=" lang1 form-select form-select-sm" aria-label="Small select example">
+                        <option selected><i class="fa-solid fa-language"></i> English</option>
+                        <!-- <option value="1">English</option> -->
+                        <option value="2">Hindi</option>
+
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
